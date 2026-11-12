@@ -240,7 +240,7 @@
   justify-content: center;
   width: 88px;
   height: 88px;
-  border-radius: 35%;
+  border-radius: 50%;
   background: var(--accent);
 }
 
