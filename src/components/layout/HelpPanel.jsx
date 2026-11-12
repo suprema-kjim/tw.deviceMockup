@@ -66,10 +66,61 @@ function breadcrumb(node, data, t) {
   return names.length ? names.join(' › ') : node.path.slice(0, -1).map(t.word).join(' › ');
 }
 
+// refer 경로를 현재 언어의 문서 주소로 바꾼다. http(s) 주소는 그대로.
+function referUrl(path, data, t) {
+  if (/^https?:\/\//.test(path)) return path;
+  const base = t.text(data.device.docs);
+  if (!base) return path;
+  return `${base.replace(/\/$/, '')}/${path.replace(/^\//, '')}`;
+}
+
+// 선택한 항목(선택지는 부모)의 refer 를 '상호 참조' 링크 목록으로 보여준다.
+function ReferSection({ node }) {
+  const { data, t, ui } = useMockup();
+  const refer = node?.refer ?? (node?.type === 'option' ? node.parent?.refer : undefined);
+  if (!refer?.length) return null;
+  return (
+    <section className={s.refer} lang={t.locale}>
+      <h3 className={s.referTitle}>{ui('refer')}</h3>
+      <ul>
+        {refer.map((r) => {
+          const url = referUrl(r.path, data, t);
+          return (
+            <li key={r.path}>
+              <a href={url} target="_blank" rel="noopener noreferrer">
+                {t.text(r.title) ?? url}
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </section>
+  );
+}
+
+// 도움말 아래에 항상 붙는 안내 문구 (선택한 항목과 관계없이 표시)
+function MockupNote({ ui, locale }) {
+  return (
+    <p className={s.note} role="note" lang={locale}>
+      <span className={s.noteIcon} aria-hidden="true">i</span>
+      <span>{ui('mockupNote')}</span>
+    </p>
+  );
+}
+
 export function HelpPanel() {
-  const { selected, values, data, t, ui } = useMockup();
-  if (!selected) return null;
-  const node = selected;
+  const { selected, t, ui } = useMockup();
+  return (
+    <div className={s.helpColumn}>
+      {selected && <HelpCard node={selected} />}
+      <ReferSection node={selected} />
+      <MockupNote ui={ui} locale={t.locale} />
+    </div>
+  );
+}
+
+function HelpCard({ node }) {
+  const { values, data, t, ui } = useMockup();
   const helpMap = node.help ?? (node.type === 'option' ? node.parent?.help : undefined);
   const help = t.text(helpMap);
   const isFallback = Boolean(help) && !t.hasText(helpMap);

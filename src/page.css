@@ -6,6 +6,7 @@
   --page-muted: #6a737d;
   --page-border: #e3e5e8;
   --page-chip: #eef0f3;
+  --page-link: #2f6fde;
   color-scheme: light;
 }
 
@@ -17,6 +18,7 @@
     --page-muted: #9aa3ad;
     --page-border: #2e3238;
     --page-chip: #2a2e34;
+    --page-link: #7aa7ff;
     color-scheme: dark;
   }
 }
@@ -53,6 +55,7 @@ body {
   background: var(--page-surface);
   color: inherit;
   font: inherit;
+  width: 200px;
 }
 
 .lang-switch {
@@ -97,6 +100,7 @@ main {
   flex-wrap: wrap;
   align-items: flex-start;
   gap: 32px;
+  justify-content: center;
 }
 
 .problems {

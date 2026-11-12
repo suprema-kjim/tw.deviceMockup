@@ -14,6 +14,9 @@ screen: 800x1280
 theme: bs3
 language: ko          # 이 파일의 이름·help 문자열 원문 언어
 languages: [ko, en]   # 화면에서 고를 수 있는 언어
+docs:                 # refer 경로 앞에 붙는 언어별 문서 주소
+  ko: https://docs.supremainc.com
+  en: https://docs.supremainc.com/en
 screens:
   # 대시보드의 사용자 등록 마법사 또는 사용자 탭의 (+)
   addUserWizard:
@@ -202,6 +205,9 @@ menu:
   - 홈 화면:
       type: home
       note: 시계 표시
+      help:
+        ko: 장치의 홈 화면입니다. 원하는 메뉴를 선택하세요.
+        en: Displays the home screen. Select a desired menu.
       children:
         - 모든 메뉴:
             type: button
@@ -470,24 +476,49 @@ menu:
                   id: exit
                   icon: exit
                   goto: home
-        - 사용자 ID:
+        - ID:
             type: button
             goto: idInput
             slot: bottom
             icon: user
             color: "#2f7bf6"
+            help:
+              ko: 사용자 ID를 입력하고 OK 버튼을 탭하면 인증할 수 있습니다.
+              en: Enter the user ID and tap OK to authenticating.
         - 근태 코드:
             type: button
             goto: tnaCode
             slot: bottom
             icon: clock
             color: "#8b5cf6"
+            help:
+              ko: 사용자가 인증한 후 원하는 근태 이벤트를 선택할 수 있습니다.
+              en: After authenticating, select the desired T&A event.
         - 출입문:
             type: button
             slot: bottom
             icon: door
             color: "#f2994a"
             children:
-              - 수동 개방
-              - 수동 잠금
-              - 개방/잠금 해제
+              - 수동 개방:
+                  help:
+                    ko: 출입문을 즉시 개방하거나 개방 상태를 유지할 시간을 설정할 수 있습니다.
+                    en: Set the time for immediate door opening or to keep the door open.
+              - 수동 잠금:
+                  help:
+                    ko: 출입문을 즉시 잠그거나 잠금 상태를 유지할 시간을 설정할 수 있습니다.
+                    en: Set the time for immediate locking or to keep the door locked.
+              - 개방/잠금 해제:
+                  help:
+                    ko: 수동 개방 또는 잠금 상태를 해제합니다.
+                    en: Cancel manual opening or manual lock hold.
+            help:
+              ko: |
+                연결된 출입문을 수동으로 개방, 잠금 또는 해제할 수 있습니다.
+                - 장치를 마스터 장치로 구성한 경우에만 출입문을 제어할 수 있습니다.
+                - 전체 관리자 또는 설정 관리자가 출입문을 제어할 수 있습니다.
+              en: |
+                You can manually open, lock, or unlock the connected door.
+                - You can control the door only when the device is configured as the master device.
+                - Use Administrator or Configuration to control the door.
+            refer: /device/biostation_3_max/admin-menu

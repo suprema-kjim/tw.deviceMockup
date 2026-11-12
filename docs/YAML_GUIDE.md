@@ -10,6 +10,9 @@ device: bs3max              # 장치 아이디 (주소 #bs3max 로 열림)
 name: BioStation 3 Max      # 화면에 표시할 이름
 screen: 800x1280            # 장치 화면 해상도(px). 좌표·테마 크기도 이 px 기준
 theme: bs3                  # src/themes/bs3.css 를 사용
+docs:                       # refer 경로 앞에 붙는 언어별 문서 주소
+  ko: https://docs.supremainc.com
+  en: https://docs.supremainc.com/en
 # assets: devices/bs3max    # 이미지 폴더 (생략하면 devices/<device>). public/ 아래 경로
 
 screens:                    # goto 로 여는 독립 화면 (닫기 X 버튼이 표시됨)
@@ -198,6 +201,7 @@ avatar 의 `icon` 으로 실루엣 모양을 바꿀 수 있습니다 (기본 `av
 | `id` | 고유 아이디 (선택) |
 | `class` | 추가 CSS 클래스 (선택) |
 | `note` | 작성자 메모. 화면에 표시되지 않음 |
+| `refer` | 도움말 아래 **상호 참조** 링크. 문서 경로(`/device/biostation_3_max/admin-menu`)를 적으면 장치의 `docs` 주소 중 현재 언어 것이 앞에 붙음. `https://...` 는 그대로. 여러 개는 목록, 링크 글자를 바꾸려면 `{ path: ..., title: { ko: .., en: .. } }` |
 
 선택지마다 도움말을 달려면 `options` 를 씁니다.
 

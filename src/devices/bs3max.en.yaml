@@ -201,7 +201,7 @@ USB 메모리: USB Memory
 나가기: Exit
 
 # 홈 화면 > 사용자 ID
-사용자 ID: User ID
+ID: ID
 
 # 홈 화면 > 출입문
 출입문: Door
@@ -213,7 +213,7 @@ USB 메모리: USB Memory
 수동 잠금: Manual Lock
 
 # 홈 화면 > 출입문 > 개방/잠금 해제
-개방/잠금 해제: Release
+개방/잠금 해제: Normalize
 
 # 기능 화면 > 사용자 추가 (1/2)
 사용자 추가 (1/2): Add User (1/2)
@@ -251,19 +251,19 @@ DHCP 연결: DHCP Connected
 입력 감지: Input Detected
 
 # 기능 화면 > 근태 코드를 선택하십시오
-근태 코드를 선택하십시오: Select a T&A code
+근태 코드를 선택하십시오: Select the T&A code
 
 # 기능 화면 > 근태 코드를 선택하십시오 > 출근
-출근: Check In
+출근: In
 
 # 기능 화면 > 근태 코드를 선택하십시오 > 퇴근
-퇴근: Check Out
+퇴근: Out
 
 # 기능 화면 > 근태 코드를 선택하십시오 > 복귀
-복귀: Back In
+복귀: In Duty
 
 # 기능 화면 > 근태 코드를 선택하십시오 > 외출
-외출: Go Out
+외출: Out Duty
 
 # 기능 화면 > 사용자 편집
 사용자 편집: Edit User

@@ -167,8 +167,8 @@
 }
 
 .homeTopButton {
-  width: 100px;
-  height: 100px;
+  width: 75px;
+  height: 75px;
   padding: 0;
   border: none;
   border-radius: 16px;
@@ -183,7 +183,7 @@
 }
 
 .homeSelected {
-  outline: 4px solid var(--focus-ring);
+  /* outline: 4px solid var(--focus-ring); */
   outline-offset: 6px;
 }
 

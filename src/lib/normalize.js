@@ -4,7 +4,7 @@ import { parseShorthand } from './shorthand.js';
 
 const NODE_KEYS = new Set([
   'type', 'id', 'help', 'icon', 'slot', 'area', 'image', 'title', 'goto',
-  'value', 'default', 'min', 'max', 'unit', 'options', 'children', 'class', 'color', 'note', 'label', 'progress', 'layout', 'keepTabs', 'header', 'status', 'time', 'placeholder', 'style', 'readonly', 'combo', 'chip', 'badge',
+  'value', 'default', 'min', 'max', 'unit', 'options', 'children', 'class', 'color', 'note', 'label', 'progress', 'layout', 'keepTabs', 'header', 'status', 'time', 'placeholder', 'style', 'readonly', 'combo', 'chip', 'badge', 'refer',
 ]);
 const LOCALE_RE = /^[a-z]{2}(-[A-Z]{2})?$/;
 const SLOTS = new Set(['top-left', 'top-right', 'bottom-left', 'bottom-right', 'bottom', 'header']);
@@ -13,6 +13,21 @@ const CONTAINER_ONLY = new Set(['bottom-tab', 'top-tab']);
 export const PATH_SEP = ' > ';
 
 const isObject = (v) => v !== null && typeof v === 'object' && !Array.isArray(v);
+
+// refer: 경로 | URL | { path, title } 또는 그 목록 → [{ path, title }]
+// 경로(/device/...)는 장치의 docs 주소 뒤에 붙고, http(s) 로 시작하면 그대로 쓴다.
+function normalizeRefer(refer, at, ctx) {
+  if (refer === undefined || refer === null) return undefined;
+  const list = Array.isArray(refer) ? refer : [refer];
+  const out = [];
+  for (const r of list) {
+    if (typeof r === 'string' && r.trim()) out.push({ path: r.trim() });
+    else if (isObject(r) && typeof (r.path ?? r.url) === 'string') {
+      out.push({ path: String(r.path ?? r.url).trim(), title: localized(r.title, at, 'refer.title', ctx) });
+    } else ctx.warnings.push(`${at}: refer 는 문서 경로 또는 { path, title } 이어야 합니다`);
+  }
+  return out.length ? out : undefined;
+}
 
 function parseScreenSize(screen, ctx) {
   if (isObject(screen) && screen.width && screen.height) {
@@ -206,6 +221,7 @@ function buildNode(name, spec, parentPath, ctx, anonymous = false) {
     className: spec.class,
     color: spec.color,
     note: spec.note,
+    refer: normalizeRefer(spec.refer, at, ctx), // 상호 참조 문서 [{ path, title }]
     children: [],
     options: [],
   };
@@ -299,6 +315,7 @@ export function normalizeDevice(doc, { file = '' } = {}) {
     theme: doc.theme ?? 'default',
     assets: ctx.assets,
     language: ctx.language, // YAML 원문(이름·help 문자열)의 언어
+    docs: localized(doc.docs, 'docs', 'docs', ctx), // refer 경로 앞에 붙는 언어별 문서 주소
   };
 
   // 메뉴 트리
