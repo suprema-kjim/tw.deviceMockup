@@ -1,0 +1,52 @@
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  line-height: 0;
+}
+
+.icon > svg {
+  width: 100%;
+  height: 100%;
+}
+
+.missing {
+  border: 2px dashed currentColor;
+  border-radius: 6px;
+  font-size: 0.6em;
+  line-height: 1;
+  opacity: 0.6;
+}
+
+.toggle {
+  position: relative;
+  flex-shrink: 0;
+  width: var(--toggle-width);
+  height: var(--toggle-height);
+  border-radius: calc(var(--toggle-height) / 2);
+  border: none;
+  padding: 0;
+  background: var(--toggle-off);
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.toggleOn {
+  background: var(--accent);
+}
+
+.toggleKnob {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: calc(var(--toggle-height) - 8px);
+  height: calc(var(--toggle-height) - 8px);
+  border-radius: 50%;
+  background: #fff;
+  transition: left 0.15s;
+}
+
+.toggleOn .toggleKnob {
+  left: calc(var(--toggle-width) - var(--toggle-height) + 4px);
+}

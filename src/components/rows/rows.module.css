@@ -1,0 +1,81 @@
+.row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-height: var(--row-height);
+  padding: 0 var(--row-padding-x);
+  border-bottom: 1px solid var(--row-border);
+  background: var(--screen-bg);
+  color: var(--text);
+  font-size: var(--font-size);
+  cursor: pointer;
+  user-select: none;
+}
+
+.row:hover {
+  background: var(--row-hover);
+}
+
+.row:focus-visible {
+  outline: 4px solid var(--accent);
+  outline-offset: -4px;
+}
+
+.selected {
+  background: var(--option-active-bg);
+}
+
+.title {
+  flex: 1;
+  min-width: 0;
+}
+
+.value {
+  color: var(--text-sub);
+  font-size: var(--font-size-sub);
+  text-align: right;
+}
+
+.chevron {
+  width: 32px;
+  height: 32px;
+  color: var(--text-sub);
+}
+
+.rowIcon {
+  width: 56px;
+  height: 56px;
+  color: var(--text);
+}
+
+.section {
+  border-bottom: 1px solid var(--row-border);
+}
+
+.sectionTitle {
+  display: flex;
+  align-items: center;
+  min-height: var(--category-height);
+  padding: 0 var(--row-padding-x);
+  background: var(--category-bg);
+  color: var(--category-fg);
+  font-size: var(--category-font-size);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.input {
+  width: 50%;
+  border: none;
+  border-bottom: 2px solid var(--row-border);
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  font-size: var(--font-size-sub);
+  text-align: right;
+  text-overflow: ellipsis; /* 긴 안내 문구는 … 로 줄임 */
+}
+
+.input::placeholder {
+  color: var(--text-sub);
+}

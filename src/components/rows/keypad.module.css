@@ -1,0 +1,69 @@
+/* 입력 칸 + 화면 키패드 (장치 px 기준) */
+
+.boxWrap {
+  padding: var(--textbox-margin);
+}
+
+.box {
+  width: 100%;
+  height: var(--textbox-height);
+  padding: 0 28px;
+  border: 2px solid var(--textbox-border);
+  border-radius: 12px;
+  background: var(--textbox-bg);
+  color: var(--text);
+  font: inherit;
+  font-size: var(--textbox-font-size);
+  outline: none;
+}
+
+.box::placeholder {
+  color: var(--form-muted);
+}
+
+.selected,
+.box:focus {
+  border-color: var(--accent);
+}
+
+/* 키패드: 화면 맨 아래 회색 판 위에 어두운 키 4×4 */
+.keypad {
+  display: flex;
+  justify-content: center;
+  margin-top: auto;
+  padding: 18px 0 20px;
+  background: var(--keypad-bg);
+}
+
+.keys {
+  display: grid;
+  grid-template-columns: repeat(4, var(--key-size));
+  grid-auto-rows: var(--key-size);
+  gap: 14px;
+}
+
+.key {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 10px;
+  background: var(--key-bg);
+  color: var(--key-fg);
+  font: inherit;
+  font-size: var(--key-font-size);
+  cursor: pointer;
+}
+
+.key:active {
+  filter: brightness(1.4);
+}
+
+.keyFn {
+  font-size: calc(var(--key-font-size) * 0.85);
+}
+
+.keyIcon {
+  width: 42%;
+  height: 42%;
+}

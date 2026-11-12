@@ -1,0 +1,38 @@
+/* 작은 가로형 화면 예시 테마: 밝은 헤더, 작은 글자 */
+.mockup-screen[data-theme='light-compact'] {
+  --accent: #0f766e;
+  --font-size: 22px;
+  --font-size-sub: 19px;
+
+  --header-height: 72px;
+  --header-font-size: 24px;
+  --header-bg: #f1f5f9;
+  --header-fg: #0f172a;
+
+  --row-height: 72px;
+  --row-padding-x: 24px;
+  --category-font-size: 18px;
+  --category-bg: #ecfdf5;
+  --category-fg: #0f766e;
+
+  --top-tab-height: 64px;
+  --top-tab-font-size: 20px;
+  --top-tab-bg: #f8fafc;
+  --top-tab-active-bg: #0f766e;
+  --top-tab-active-fg: #ffffff;
+
+  --bottom-tab-height: 100px;
+  --bottom-tab-font-size: 16px;
+  --bottom-tab-icon-size: 36px;
+
+  --toggle-width: 64px;
+  --toggle-height: 36px;
+  --fab-size: 76px;
+  --option-active-bg: #ecfdf5;
+
+  --home-bg: linear-gradient(135deg, #0f766e, #134e4a);
+  --home-time-size: 84px;
+
+  --bezel: #cbd5e1;
+  --bezel-radius: 36px;
+}

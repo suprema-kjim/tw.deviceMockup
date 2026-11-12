@@ -1,0 +1,20 @@
+/* BioStation 3 계열 화면 (기존 Docusaurus 목업의 색을 장치 px 로 옮김) */
+.mockup-screen[data-theme='bs3'] {
+  --accent: #b72040;
+  --info-color: #a56023;
+
+  --header-bg: #353535;
+  --category-bg: #d8dbe3;
+  --category-fg: #773a16;
+
+  --top-tab-bg: #4f4f4f;
+  --top-tab-fg: #929292;
+  --top-tab-active-bg: #252525;
+  --top-tab-active-fg: #ffffff;
+  --bottom-tab-fg: #515151;
+
+  --option-active-bg: #f5decf;
+  --sheet-radius: 0px;
+
+  --home-bg: linear-gradient(160deg, #4c2f8f 0%, #3d3f9e 35%, #2f5fc7 65%, #1f8fb0 100%);
+}

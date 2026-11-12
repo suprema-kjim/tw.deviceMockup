@@ -1,0 +1,271 @@
+/* ── 장치 틀 (웹 px) ─────────────────────────────── */
+.frameBox {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  transform-origin: 0 0;
+  border-radius: var(--bezel-radius);
+  background: var(--bezel);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.35);
+}
+
+.screen {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--screen-radius);
+}
+
+/* ── 헤더 / 탭 (장치 px) ─────────────────────────── */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-shrink: 0;
+  height: var(--header-height);
+  padding: 0 24px;
+  background: var(--header-bg);
+  color: var(--header-fg);
+}
+
+.headerTitle {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  font-size: var(--header-font-size);
+  font-weight: 600;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.headerButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  padding: 0;
+  border: none;
+  border-radius: 12px;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.headerButton:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.headerPill {
+  height: 60px;
+  padding: 0 24px;
+  border: none;
+  border-radius: 30px;
+  background: var(--header-pill-bg);
+  color: var(--header-pill-fg);
+  font: inherit;
+  font-size: var(--header-pill-font-size);
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.headerSelected {
+  outline: 4px solid var(--focus-ring);
+}
+
+.headerSpacer {
+  width: 0;
+}
+
+.headerIcon {
+  width: 40px;
+  height: 40px;
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.topTabs {
+  display: flex;
+  flex-shrink: 0;
+  height: var(--top-tab-height);
+  background: var(--top-tab-bg);
+}
+
+.topTab {
+  flex: 1;
+  min-width: 0;
+  padding: 0 12px;
+  overflow: hidden;
+  /* 영어 등 긴 이름은 줄여서 표시 (전체 이름은 title 툴팁) */
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  border: none;
+  background: none;
+  color: var(--top-tab-fg);
+  font: inherit;
+  font-size: var(--top-tab-font-size);
+  cursor: pointer;
+}
+
+.topTab.tabActive {
+  background: var(--top-tab-active-bg);
+  color: var(--top-tab-active-fg);
+  font-weight: 600;
+}
+
+.bottomTabs {
+  display: flex;
+  flex-shrink: 0;
+  height: var(--bottom-tab-height);
+  border-top: 1px solid var(--row-border);
+  background: var(--bottom-tab-bg);
+}
+
+.bottomTab {
+  flex: 1;
+  min-width: 0;
+  padding: 0 4px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: none;
+  background: none;
+  color: var(--bottom-tab-fg);
+  font: inherit;
+  font-size: var(--bottom-tab-font-size);
+  cursor: pointer;
+}
+
+.bottomTab.tabActive {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.bottomTabIcon {
+  width: var(--bottom-tab-icon-size);
+  height: var(--bottom-tab-icon-size);
+}
+
+/* ── 도움말 패널 (웹 px) ─────────────────────────── */
+.help {
+  flex: 1;
+  min-width: 260px;
+  max-width: 560px;
+  padding: 24px 28px;
+  border: 1px solid var(--page-border);
+  border-radius: 14px;
+  background: var(--page-surface);
+  color: var(--page-text);
+}
+
+.helpPath {
+  min-height: 1.4em;
+  color: var(--page-muted);
+  font-size: 13px;
+}
+
+.helpHead {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 6px 0 14px;
+}
+
+.helpTitle {
+  margin: 0;
+  font-size: 22px;
+}
+
+.helpType {
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--page-chip);
+  color: var(--page-muted);
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.helpText {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.7;
+  white-space: pre-wrap;
+}
+
+.helpFallback {
+  margin: 0 0 10px;
+  color: var(--page-muted);
+  font-size: 12px;
+}
+
+.helpEmpty {
+  margin: 0;
+  padding: 14px 16px;
+  border: 1px dashed var(--page-border);
+  border-radius: 10px;
+  color: var(--page-muted);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.helpProps {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 6px 16px;
+  margin: 20px 0 0;
+  font-size: 14px;
+}
+
+.helpProps dt {
+  color: var(--page-muted);
+}
+
+.helpProps dd {
+  margin: 0;
+}
+
+.helpOptions {
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.helpSubTitle {
+  margin-bottom: 6px;
+  color: var(--page-muted);
+}
+
+.helpOptions ul {
+  margin: 0;
+  padding-left: 18px;
+  line-height: 1.8;
+}
+
+.helpOptions p {
+  margin: 0 0 4px;
+  color: var(--page-muted);
+}
+
+.helpOptionCurrent {
+  font-weight: 700;
+}
+
+.helpBadge {
+  margin-left: 8px;
+  padding: 1px 6px;
+  border-radius: 6px;
+  background: var(--page-chip);
+  color: var(--page-muted);
+  font-size: 11px;
+}

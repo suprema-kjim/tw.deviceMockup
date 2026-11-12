@@ -1,0 +1,251 @@
+/* 장치 px 기준 */
+.overlay,
+.overlayCenter {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.overlay {
+  align-items: flex-end;
+}
+
+/* 인증 수단 고르기: 옅게 어둡게 */
+.overlayLight {
+  background: var(--picker-overlay);
+}
+
+.overlayCenter {
+  align-items: center;
+}
+
+.holder {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-height: 80%;
+}
+
+.sheet {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-height: 100%;
+  border-radius: var(--sheet-radius) var(--sheet-radius) 0 0;
+  background: var(--screen-bg);
+  color: var(--text);
+}
+
+.sheetHeader {
+  position: relative;
+  flex-shrink: 0;
+  padding: 40px 100px;
+  text-align: center;
+}
+
+.sheetTitle {
+  font-size: var(--header-font-size);
+  font-weight: 700;
+}
+
+.close {
+  position: absolute;
+  top: 28px;
+  right: 28px;
+  width: 64px;
+  height: 64px;
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.closeIcon {
+  width: 40px;
+  height: 40px;
+}
+
+.optionList {
+  overflow-y: auto;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 32px 40px;
+  border: none;
+  border-bottom: 1px solid var(--row-border);
+  background: none;
+  color: var(--text);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.optionActive {
+  background: var(--option-active-bg);
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.check {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+}
+
+.checkIcon {
+  width: 24px;
+  height: 24px;
+}
+
+.slideBody {
+  position: relative;
+  padding: 150px 80px 90px;
+}
+
+.bubble,
+.bubbleStatic {
+  padding: 12px 36px;
+  border-radius: 12px;
+  background: var(--accent);
+  color: #fff;
+  font-size: calc(var(--font-size) * 1.6);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* 트랙 기준 위치. --p 는 0~100 (값의 비율) */
+.sliderTrack {
+  --thumb: var(--slider-thumb-size);
+  position: relative;
+}
+
+/* 손잡이 바로 위 말풍선 + 아래로 향한 꼬리 */
+.bubble {
+  position: absolute;
+  bottom: calc(100% + 26px);
+  left: calc(var(--p) * (100% - var(--thumb)) / 100 + var(--thumb) / 2);
+  transform: translateX(-50%);
+}
+
+.bubble::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  border: 14px solid transparent;
+  border-top-color: var(--accent);
+  border-bottom: 0;
+  transform: translateX(-50%);
+}
+
+.bubbleStatic {
+  width: fit-content;
+  margin: -60px auto 0;
+}
+
+/* 슬라이더: 왼쪽은 강조색, 오른쪽은 회색 트랙 + 둥근 손잡이 */
+.slider {
+  display: block;
+  width: 100%;
+  height: var(--thumb);
+  margin: 0;
+  background: transparent;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+
+.slider::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 2px;
+  background: linear-gradient(to right, var(--accent) calc(var(--p) * 1%), var(--slider-rest) 0);
+}
+
+.slider::-webkit-slider-thumb {
+  width: var(--thumb);
+  height: var(--thumb);
+  margin-top: calc((4px - var(--thumb)) / 2);
+  border: none;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 10px var(--slider-halo);
+  -webkit-appearance: none;
+}
+
+.slider::-moz-range-track {
+  height: 4px;
+  border-radius: 2px;
+  background: var(--slider-rest);
+}
+
+.slider::-moz-range-progress {
+  height: 4px;
+  border-radius: 2px;
+  background: var(--accent);
+}
+
+.slider::-moz-range-thumb {
+  width: var(--thumb);
+  height: var(--thumb);
+  border: none;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 10px var(--slider-halo);
+}
+
+.dialog {
+  width: 80%;
+  padding: 48px 40px 32px;
+  border-radius: 24px;
+  background: var(--screen-bg);
+  color: var(--text);
+}
+
+.dialogTitle {
+  margin-bottom: 20px;
+  font-size: var(--header-font-size);
+  font-weight: 700;
+}
+
+.dialogText {
+  margin: 0 0 40px;
+  color: var(--text-sub);
+  line-height: 1.6;
+}
+
+.dialogButtons {
+  display: flex;
+  gap: 20px;
+}
+
+.dialogButtons button {
+  flex: 1;
+  height: 88px;
+  border: none;
+  border-radius: 16px;
+  font: inherit;
+  cursor: pointer;
+}
+
+.dialogCancel {
+  background: var(--toggle-off);
+  color: var(--text);
+}
+
+.dialogOk {
+  background: var(--accent);
+  color: #fff;
+}

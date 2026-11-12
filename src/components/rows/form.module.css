@@ -1,0 +1,277 @@
+/* 입력 화면 요소 (장치 px 기준) */
+
+.selected {
+  outline: 4px solid var(--focus-ring);
+  outline-offset: 4px;
+  border-radius: 12px;
+}
+
+/* 프로필 사진 */
+.avatar {
+  position: relative;
+  align-self: center;
+  width: var(--avatar-size);
+  height: var(--avatar-size);
+  margin: var(--avatar-margin);
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.avatarImage {
+  width: 100%;
+  height: 100%;
+  color: var(--avatar-color);
+}
+
+.avatarCamera {
+  position: absolute;
+  right: -110px;
+  bottom: 40px;
+  width: 80px;
+  height: 80px;
+  color: var(--form-muted);
+}
+
+/* 입력 칸 */
+.field {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin: 0 var(--form-gutter) var(--field-gap);
+  border-bottom: 2px solid var(--field-line);
+}
+
+.fieldInput {
+  flex: 1;
+  min-width: 0;
+  height: var(--field-height);
+  padding: 0 72px;
+  border: none;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  font-size: var(--field-font-size);
+  text-align: center;
+  outline: none;
+}
+
+.fieldReadonly {
+  color: var(--form-muted);
+  cursor: default;
+}
+
+.fieldInput::placeholder {
+  color: var(--form-muted);
+}
+
+.clear {
+  position: absolute;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: var(--field-clear-bg);
+  color: #fff;
+  cursor: pointer;
+}
+
+.clearIcon {
+  width: 60%;
+  height: 60%;
+}
+
+/* 아이콘 선택 칸 (연달아 적으면 한 줄로 묶임) */
+.checkRow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 24px 56px 0;
+}
+
+.check {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 8px 0;
+  border: none;
+  background: none;
+  color: var(--form-muted);
+  font: inherit;
+  cursor: pointer;
+}
+
+.checkCircle {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--check-size);
+  height: var(--check-size);
+  border-radius: 50%;
+  background: var(--check-off-bg);
+}
+
+.checkIcon {
+  width: 66%;
+  height: 66%;
+  color: var(--check-off);
+}
+
+.checkLabel {
+  color: var(--check-off);
+  font-size: var(--check-font-size);
+  font-weight: 500;
+}
+
+.checkOn .checkCircle {
+  background: var(--check-on-bg);
+}
+
+.checkOn .checkIcon,
+.checkOn .checkLabel {
+  color: var(--accent);
+}
+
+.checkBadge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border: 4px solid var(--check-on-bg);
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+}
+
+.checkBadgeIcon {
+  width: 56%;
+  height: 56%;
+}
+
+/* 아래쪽 큰 버튼: 화면 맨 아래로 붙는다 */
+.actionWrap {
+  display: flex;
+  margin-top: auto;
+  padding: 32px var(--form-gutter-wide) 40px;
+}
+
+.action {
+  flex: 1;
+  height: var(--action-height);
+  border: none;
+  border-radius: 28px;
+  background: var(--action-bg);
+  color: var(--action-fg);
+  font: inherit;
+  font-size: var(--action-font-size);
+  cursor: pointer;
+}
+
+/* 색 타일 버튼 2칸 격자 */
+.padGrid {
+  display: grid;
+  grid-template-columns: repeat(var(--pad-columns), 1fr);
+  gap: 1px;
+  background: var(--pad-gap-color);
+}
+
+.pad {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  height: var(--pad-height);
+  border: none;
+  background: var(--accent);
+  color: var(--pad-fg);
+  font: inherit;
+  font-size: var(--pad-font-size);
+  cursor: pointer;
+}
+
+.pad:hover {
+  filter: brightness(1.05);
+}
+
+.padSelected {
+  box-shadow: inset 0 0 0 5px var(--focus-ring);
+}
+
+.padIcon {
+  width: 40px;
+  height: 40px;
+}
+
+/* 배경 있는 묶음 (group) */
+.group {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: var(--group-padding-bottom);
+  background: var(--group-bg);
+}
+
+/* 하나만 고르는 아이콘 칸 4칸 격자 */
+.choiceGrid {
+  display: grid;
+  grid-template-columns: repeat(var(--choice-columns), var(--choice-size));
+  justify-content: space-evenly;
+  row-gap: var(--choice-gap);
+  padding: 56px 32px;
+}
+
+.choice {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--choice-size);
+  height: var(--choice-size);
+  padding: 0;
+  border: 3px solid var(--choice-border);
+  border-radius: 38%;
+  background: var(--choice-bg);
+  color: var(--choice-fg);
+  cursor: pointer;
+}
+
+.choiceOn {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.choiceIcon {
+  width: 50%;
+  height: 50%;
+}
+
+.choiceBadge {
+  position: absolute;
+  bottom: 18%;
+  width: 14%;
+  height: 14%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.badgeIn {
+  left: 14%;
+}
+
+.badgeOut {
+  right: 14%;
+}

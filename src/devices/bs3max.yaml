@@ -1,0 +1,493 @@
+# BioStation 3 Max 메뉴 정의
+# 작성 방법은 docs/YAML_GUIDE.md 를 참고하세요.
+#   - 한 줄 표기:  - 이름: toggle on | select [a, *기본값, c] | slide 20 | string 값
+#   - 펼친 표기:  - 이름: { type: ..., help: 도움말, children: [...] }
+#   - 이미지 파일은 public/devices/bs3max/ 에 넣습니다.
+#   - 영어 등 다른 언어:
+#       메뉴 이름  → bs3max.en.yaml 사전 (npm run i18n -- bs3max en 으로 목록 갱신)
+#       도움말     → help: { ko: ..., en: ... }
+#       언어별 이미지 → image: { ko: a.png, en: a-en.png }
+
+device: bs3max
+name: BioStation 3 Max
+screen: 800x1280
+theme: bs3
+language: ko          # 이 파일의 이름·help 문자열 원문 언어
+languages: [ko, en]   # 화면에서 고를 수 있는 언어
+screens:
+  # 대시보드의 사용자 등록 마법사 또는 사용자 탭의 (+)
+  addUserWizard:
+    title: 사용자 추가 (1/2)
+    header: both        # 뒤로 가기(←)와 닫기(X)를 함께 표시
+    layout: form        # 입력 화면: 위에서부터 쌓고 action 버튼은 맨 아래
+    children:
+      - 사진: { type: avatar }
+      - 이름: { type: field, placeholder: 이름을 입력하십시오 }
+      - 사용자 ID: field 2
+      - 얼굴: { type: check on, icon: face }
+      - 카드 / QR코드: { type: check off, icon: card }
+      - PIN: { type: check off, icon: key }
+      - 다음: { type: action }   # goto 가 없으므로 눌러도 이동하지 않음 (도움말만 표시)
+  # 대시보드 위쪽 세 수치 또는 사용자 탭의 (i) 를 누르면 열리는 화면
+  listUsers:
+    title: 사용자 등록현황
+    keepTabs: true      # 하단 탭 바를 그대로 두고, 헤더에는 뒤로 가기 표시
+    layout: list        # stat 을 세로 목록으로 (링 오른쪽에 이름과 값 / 최대값)
+    children:
+      - 사용자 수: { type: stat 1, max: "100,000", icon: stat-user }   # progress 생략 → 값/max 로 자동 계산 (0 이면 호 없음)
+      - 얼굴 수: { type: stat 0, max: "100,000", icon: face }
+      - 카드 수: { type: stat 0, max: "100,000", icon: card }
+
+  # 대시보드의 DRAM 사용량 또는 설정 > 장치 > 메모리 정보
+  memoryInfo:
+    title: 메모리 정보
+    keepTabs: true
+    layout: list        # 항목이 하나면 가운데 정렬
+    children:
+      - DRAM 사용량: { type: "stat 711,688", max: "3,992,376 (KB)", icon: memory }
+
+  # 대시보드의 이벤트 로그 (하단 탭 없음, 헤더에 뒤로 가기 + 검색·삭제 아이콘)
+  eventLog:
+    title: 이벤트 로그
+    header: back
+    children:
+      - 검색: { type: button, slot: header, icon: search }
+      - 삭제: { type: button, slot: header, icon: trash }
+      - 전체 이벤트 로그:
+          type: section
+          value: "33"          # 제목 옆 개수
+          icon: info
+          color: "#c8620a"
+          note: 실제 장치에는 33건이 있으나 사진에 보이는 항목만 옮김
+          children:
+            - 관리자 메뉴: log info 2026-11-12 00:49:09
+            - 관리자 인증 실패: log fail 2026-11-12 00:48:59
+            - 인증 실패: log fail 2026-11-12 00:48:59
+            - 인증 실패: log fail 2026-11-12 00:47:23
+            - DHCP 연결: log success 2026-11-12 00:46:37
+            - 이더넷 연결: log info 2026-11-12 00:46:36
+            - 탬퍼 켜짐: log info 2026-11-12 00:46:33
+            - 입력 감지: log info 2026-11-12 00:46:33
+
+  # 홈 화면의 근태 코드 버튼 (닫기 X 만 있는 선택 화면)
+  tnaCode:
+    title: 근태 코드를 선택하십시오
+    layout: form        # 회색 배경
+    children:
+      - 출근: { type: pad, icon: tna-in, color: "#ef6b8f" }
+      - 퇴근: { type: pad, icon: tna-out, color: "#ef6b8f" }
+      - 복귀: { type: pad, icon: tna-return, color: "#b25dc1" }
+      - 외출: { type: pad, icon: tna-leave, color: "#b25dc1" }
+
+  # 사용자 탭에서 사용자(Administrator)를 누르면 열리는 화면
+  userEdit:
+    title: 사용자 편집
+    header: back
+    layout: form
+    style:                          # 이 화면의 목록 줄을 크게
+      --row-height: 112px
+      --screen-bg: "#e9ecf0"         # 아래 목록 배경
+      --font-size: 34px
+      --font-size-sub: 34px
+    children:
+      - 삭제: { type: button, slot: header, icon: trash }
+      - OK: { type: button, slot: header }   # 아이콘이 없으면 글자 버튼
+      - 사용자 정보:
+          type: group               # 푸른 회색 배경의 프로필 영역
+          style:
+            --group-bg: "linear-gradient(180deg, #c7d1e0, #d7dee8)"
+            --group-padding-bottom: 12px
+            --avatar-size: 200px
+            --avatar-margin: 32px 0 24px
+            --field-gap: 8px
+            --field-height: 104px
+            --check-size: 130px
+            --check-off-bg: "#f3f4f6"
+          children:
+            - 사진: { type: avatar, icon: avatar-filled }   # 회색 사각형 안의 흰 실루엣
+            - 이름: { type: field Administrator }
+            - 사용자 ID: { type: field 1, readonly: true }
+            - 얼굴: { type: check off, icon: face }
+            - 카드 / QR코드: { type: check off, icon: card }
+            - PIN: { type: check off, icon: key }
+      - 사용자 권한: { type: string 권한 없음, color: accent }
+      - 유효기간: { type: string 2001/01/01 ~ 2037/12/31, color: accent }
+      - 출입 그룹: { type: string 0, color: accent }
+      - 확장 개인 인증 모드: { type: string 0, color: accent }
+
+  # 인증 탭 > 인증 모드 > 인증 모드 (등록된 인증 모드 목록)
+  authModes:
+    title: 인증 모드
+    keepTabs: true
+    style:
+      --screen-bg: "#e9ecf0"
+      --font-size-sub: 34px
+    children:
+      - 삭제: { type: button, slot: header, icon: trash }
+      # combo: 인증 수단(face, card, qr, card-qr, pin, id, fingerprint)을 + (그리고) / (또는) 로 연결
+      - 얼굴: { type: authmode, combo: [face], value: 항상 사용 }
+      - 카드/QR + 얼굴/PIN: { type: authmode, combo: [card-qr, +, face, /, pin], value: 항상 사용 }
+      - ID + 얼굴/PIN: { type: authmode, combo: [id, +, face, /, pin], value: 항상 사용 }
+      - 인증 모드 추가: { type: button, slot: bottom-right, icon: plus, goto: authModeAdd }
+
+  # 인증 모드 목록의 (+) → 점선 원을 누르면 인증 수단 고르기 팝업
+  authModeAdd:
+    title: 인증 모드 등록
+    keepTabs: true
+    style:
+      --screen-bg: "#e9ecf0"
+      --font-size: 36px
+      --font-size-sub: 36px
+      --row-height: 168px
+    children:
+      - 인증 수단 추가:
+          type: compose
+          children:
+            - 얼굴: { type: chip, chip: face }
+            - 카드 / QR코드: { type: chip, chip: card-qr }
+            - ID: { type: chip, chip: id }
+      - 스케줄: select [항상 사용]
+
+  # 홈 화면의 사용자 ID 버튼 → ID 를 입력해 인증하는 화면
+  idInput:
+    title: ID 입력
+    header: back
+    layout: form        # 들어올 때마다 입력값 초기화, 키패드는 화면 맨 아래
+    style:
+      --dashboard-bg: "linear-gradient(180deg, #d5dce7, #dfe4ec)"
+    children:
+      - OK: { type: button, slot: header }
+      - ID 입력칸: { type: textbox, placeholder: ID 입력 }
+      - 키패드: { type: keypad }   # 숫자 키를 누르면 위 입력칸에 입력. ⌨ 는 키패드 숨기기
+
+  # 인증 탭 > 근태 > 근태 코드 의 (+) → 근태 코드 등록
+  # 아이콘에는 이름이 없다. 사용자가 아이콘을 고르고 '근태 이벤트 이름'에 직접 입력한다.
+  # 이름 없는 항목은 "- { type: ..., icon: ... }" 로 적고, 누르면 부모(근태 아이콘)의 도움말이 나온다.
+  # badge: in(↗) / out(↘) 은 아이콘 모서리의 작은 화살표
+  tnaCodeAdd:
+    title: 근태 코드 등록
+    keepTabs: true
+    style:
+      --screen-bg: "#e9ecf0"
+      --font-size: 36px
+      --font-size-sub: 36px
+      --row-height: 150px
+    children:
+      - OK: { type: button, slot: header }
+      - 근태 아이콘:
+          type: group
+          style:
+            --group-bg: "linear-gradient(180deg, #c6d1e2, #d3dbe8)"
+          children:
+            - { type: choice on, icon: tna-in }
+            - { type: choice, icon: meal, badge: in }
+            - { type: choice, icon: meeting, badge: in }
+            - { type: choice, icon: tna-return }
+            - { type: choice, icon: lifebuoy, badge: in }
+            - { type: choice, icon: briefcase, badge: in }
+            - { type: choice, icon: calendar, badge: in }
+            - { type: choice, icon: coffee, badge: in }
+            - { type: choice, icon: tna-out }
+            - { type: choice, icon: meal, badge: out }
+            - { type: choice, icon: meeting, badge: out }
+            - { type: choice, icon: tna-leave }
+            - { type: choice, icon: lifebuoy, badge: out }
+            - { type: choice, icon: briefcase, badge: out }
+            - { type: choice, icon: calendar, badge: out }
+            - { type: choice, icon: coffee, badge: out }
+      - 근태 이벤트 이름: { type: input, placeholder: 근태 이벤트 이름을 입력하십시오 }
+      - 스케줄: select [사용 안 함, 항상 사용]
+
+menu:
+  - 홈 화면:
+      type: home
+      note: 시계 표시
+      children:
+        - 모든 메뉴:
+            type: button
+            slot: top-left
+            icon: grid
+            children:
+              - 대시보드:
+                  type: bottom-tab
+                  id: dashboard
+                  icon: dashboard
+                  help:
+                    ko: 장치 사용 현황 및 정보를 확인할 수 있습니다. 또는 사용자 등록 마법사를 눌러 바로 사용자를 등록할 수도 있습니다.
+                    en: Check the device usage status and information. You can also tap User Registration Wizard to register a user right away.
+                  # 이미지 대신 코드로 그리는 대시보드: stat(원형 수치)·tile(바로가기)은 3칸 격자, info 는 아래 정보 묶음
+                  # progress 는 링의 빨간 호 비율(0~1). 생략하면 호 없이 회색 링만 표시
+                  children:
+                    - 사용자 수: { type: stat 1, icon: stat-user, progress: 0, goto: listUsers }
+                    - 얼굴 수: { type: stat 0, icon: face, goto: listUsers }
+                    - 카드 수: { type: stat 0, icon: card, goto: listUsers }
+                    - DRAM 사용량: { type: "stat 710,956", icon: memory, progress: 0.18, goto: memoryInfo }
+                    - 이벤트 로그: { type: stat 33, icon: log, progress: 0, goto: eventLog }
+                    - 사용자 등록 마법사:
+                        type: tile
+                        id: addUserWizard
+                        goto: addUserWizard
+                        icon: add-user-scan
+                        help:
+                          ko: 새로운 사용자를 등록할 수 있습니다.
+                          en: Register a new user.
+                    - 장치 요약:
+                        type: info
+                        children:
+                          - 모델명: string BS3M-OAPB
+                          - 장치 ID: string *********
+                          - HW: string 1.0.0
+                          - FW: string 1.0.0 [YYYY/MM/DD hh:mm:ss](D)
+                          - 커널: string 1.0.0 [YYYY/MM/DD hh:mm:ss]
+                          - MAC: "string ##:##:##:##:##:##"
+                          - 무선 MAC: "string ##:##:##:##:##:##"
+                    - 규제인증 및 라이선스:
+                        type: button
+                        id: regulatory
+                        icon: regulatory
+                        slot: header
+                        children:
+                          - 라이선스:
+                              type: category
+                              children:
+                                - 오픈 소스 소프트웨어: parent
+                          - 규제인증 정보: category
+              - 사용자:
+                  type: bottom-tab
+                  id: users
+                  icon: users
+                  children:
+                    - 사용자 수:
+                        type: category
+                        children:
+                          - Administrator: { goto: userEdit }
+                    - 사용자 추가(+):
+                        type: button
+                        slot: bottom-right
+                        goto: addUserWizard
+                        icon: plus
+                    - 사용자 등록현황:
+                        type: button
+                        slot: top-right
+                        goto: listUsers
+                        icon: info
+              - 인증:
+                  type: bottom-tab
+                  id: auth
+                  icon: auth
+                  children:
+                    - 인증 모드:
+                        type: top-tab
+                        children:
+                          - 인증 모드: { goto: authModes }
+                          - 인증 옵션:
+                              type: category
+                              children:
+                                - 서버 매칭(지문, 카드, ID): toggle off
+                                - QR 인증: toggle off
+                                - 카드를 QR로 인증하기: toggle off
+                          - PIN:
+                              type: category
+                              children:
+                                - 스크램블 키패드: toggle on
+                          - 인증 결과 표시 옵션:
+                              type: category
+                              children:
+                                - 사용자 ID 표시: select [*전체 표시, 첫 문자만 표시, 표시하지 않기]
+                                - 사용자 이름 표시: select [*전체 표시, 첫 문자만 표시, 표시하지 않기]
+                    - 얼굴 & 지문:
+                        type: top-tab
+                        children:
+                          - 얼굴 인증 옵션:
+                              type: category
+                              children:
+                                - 모션 센서 감도: select [끔, 낮음, *중간, 높음]
+                                - 등록 대기 시간: slide 20 초
+                                - 인증 대기 시간: slide 5 초
+                                - 등록얼굴 중복검사: toggle on
+                                - 얼굴 검출 설정:
+                                    - 최대 얼굴 회전 각도: select [*15°, 30°, 45°, 60°, 75°, 90°]
+                                    - 얼굴 인식 거리: range 30cm~130cm
+                                    - 얼굴 인식 영역 넓히기: toggle off
+                                - ToM 등록: toggle on
+                                - 비주얼 페이스 이미지 저장하기: toggle on
+                          - 얼굴 인식:
+                              type: category
+                              children:
+                                - 보안 등급: select [*보통, 안전, 가장 안전]
+                                - 작동 모드: select [*퓨전 매칭, 빠른 인증]
+                                - 위조 얼굴 검출: select [보통, *안전, 강함, 아주 강함]
+                                - 고급 설정:
+                                    - 마스크 검출:
+                                        type: category
+                                        children:
+                                          - 마스크 검출: toggle off
+                                    - 마스크 확인 모드 설정:
+                                        type: category
+                                        children:
+                                          - 확인 모드: select [*인증 후 확인, 확인 후 인증, 확인만]
+                          - 지문 인증 옵션:
+                              type: category
+                              children:
+                                - 보안 등급: select [*보통, 안전, 가장 안전]
+                                - 매칭 대기 시간: slide 5 초
+                                - 이미지 표시: toggle off
+                                - 센서 감도: slide 7
+                                - 1:N Fast 모드: select [*자동, 보통, 빠름, 가장 빠름]
+                                - 템플릿 형식: select [*SUPREMA, ISO 19794-2, ANSI-378]
+                                - 센서 모드: select [항상 켜짐, *자동 켜짐]
+                                - 위조 지문 검출: select [*사용 안 함, 보통, 강함, 아주 강함]
+                                - 등록 품질 검사: toggle on
+                                - 등록지문 중복검사: toggle on
+                    - 근태:
+                        type: top-tab
+                        children:
+                          - 근태 모드: select [*사용 안함, 수동변경, 자동변경, 수동고정, 고정]
+                          - 근태 코드:
+                              - (+):
+                                  type: button
+                                  goto: tnaCodeAdd
+                                  slot: bottom-right
+                                  icon: plus
+                          - 근태 등록 필요: toggle off
+                          - 작업 코드: toggle off
+              - 설정:
+                  type: bottom-tab
+                  id: settings
+                  icon: settings
+                  children:
+                    - 화면과 소리:
+                        type: top-tab
+                        children:
+                          - 화면:
+                              type: category
+                              children:
+                                - 홈 화면: select [*보통, 공지사항, 로고, 슬라이드쇼]
+                                - 언어: select [*한국어, English, 사용자 정의]
+                                - 장치 개인 메시지: toggle off
+                                - 서버 개인 메시지: toggle off
+                                - 화면 보호기: toggle off
+                          - 타임아웃:
+                              type: category
+                              children:
+                                - 메뉴 표시 시간: select [항상 켜짐, 10 초, *20 초, 30 초, 40 초, 50 초]
+                                - 메시지 표시 시간: select [0.5 초, 1 초, *2 초, 3 초, 4 초, 5 초]
+                                - 백라이트 시간: select [항상 켜짐, 10 초, *20 초, 30 초, 40 초, 50 초]
+                          - 사운드:
+                              type: category
+                              children:
+                                - 음성 안내: toggle off
+                                - 볼륨: slide 50
+                                - IP 인터폰 스피커 음량: slide 50
+                                - IP 인터폰 마이크 음량: slide 50
+                    - 통신:
+                        type: top-tab
+                        children:
+                          - 네트워크 장치:
+                              type: category
+                              children:
+                                - 이더넷:
+                                    - TCP/IP 설정:
+                                        type: category
+                                        children:
+                                          - DHCP: toggle off
+                                          - 장치 포트: string 51211
+                                          - IP 주소: string 192.168.1.111
+                                          - 게이트웨이: string 192.168.1.1
+                                          - 서브넷마스크: string 255.255.255.0
+                                          - 도메인네임서버: string 0.0.0.0
+                                - 네트워크 서버:
+                                    type: category
+                                    children:
+                                      - 서버:
+                                          note: 서버 → 장치(서버 편집에서 선택한 값 표시)
+                                          children:
+                                            - 서버 편집:
+                                                - 장치 -> 서버: toggle off
+                                - OSDP 통신 설정:
+                                    type: category
+                                    children:
+                                      - RS-485: select [마스터, 슬레이브, *기본값]
+                                      - 전송 속도: select [*115200, 57600, 38400, 19200, 9600]
+                                      - 인증 결과: select [*컨트롤러 결과 표시, 장치 인증 결과 표시]
+                    - 장치:
+                        type: top-tab
+                        children:
+                          - 설정:
+                              type: category
+                              children:
+                                - IP 인터폰:
+                                    - IP 인터폰: toggle off
+                                - 라이선스:
+                                    - 슬레이브 장치 라이선스 목록: parent
+                                    - 장치에 활성화된 라이선스 목록:
+                                        type: category
+                                        children:
+                                          - Camera QR
+                                - 릴레이:
+                                    - 릴레이: toggle off
+                                - 날짜와 시간:
+                                    - 날짜와 시간: input 2026/07/20 오전 04:08:39
+                                    - 표준 시간대: select [*UTC]
+                                    - 시간 동기화: toggle on
+                                    - 날짜 형식: select [*YYYY/MM/DD, MM/DD/YYYY, DD/MM/YYYY]
+                                    - 시간 형식: select [*오전/오후, 24시간]
+                                - 일광절약시간:
+                                    - (+):
+                                        type: button
+                                        image: bs3m-add-dst.png
+                                        title: 일광절약시간 추가
+                                        slot: bottom-right
+                                        icon: plus
+                                - 장치 정보:
+                                    - 모델명: string BS3M-OAPB
+                                    - 장치 ID: string *********
+                                    - 시리얼 번호: string *********
+                                    - HW: string 1.0.0
+                                    - FW: string 1.0.0 [YYYY/MM/DD hh:mm:ss](D)
+                                    - 커널: string 1.0.0 [YYYY/MM/DD hh:mm:ss]
+                                    - MAC: "string ##:##:##:##:##:##"
+                                - 메모리 정보: { goto: memoryInfo }
+                                - USB 메모리:
+                                    - 가져오기: parent
+                                    - 내보내기: parent
+                                    - 펌웨어 업그레이드: parent
+                                - 보안 탬퍼: toggle off
+                                - RTSP:
+                                    - RTSP: toggle off
+                                - 마스터 관리자:
+                                    image: bs3m-setting-master-admin-start.png
+                                    title: 마스터 관리자 설정
+                                - 장치 다시 시작:
+                                    - 장치 다시 시작: popup
+                                - 기본값 복원:
+                                    - 전체 설정: parent
+                                    - 네트워크 설정 유지: parent
+                                    - 공장 초기화: parent
+                                - 사용자 ID 종류: select [*숫자, 영숫자]
+              - 나가기:
+                  type: bottom-tab
+                  id: exit
+                  icon: exit
+                  goto: home
+        - 사용자 ID:
+            type: button
+            goto: idInput
+            slot: bottom
+            icon: user
+            color: "#2f7bf6"
+        - 근태 코드:
+            type: button
+            goto: tnaCode
+            slot: bottom
+            icon: clock
+            color: "#8b5cf6"
+        - 출입문:
+            type: button
+            slot: bottom
+            icon: door
+            color: "#f2994a"
+            children:
+              - 수동 개방
+              - 수동 잠금
+              - 개방/잠금 해제

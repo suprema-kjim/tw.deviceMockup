@@ -1,0 +1,325 @@
+# BioStation 3 Max — en 표시 이름 사전
+# 왼쪽: bs3max.yaml 의 원문(ko) / 오른쪽: 번역. 비워 두면 원문이 표시됩니다.
+# 같은 원문은 한 번만 번역하면 모든 곳에 적용됩니다.
+# 특정 위치만 다르게 번역하려면 bs3max.yaml 의 해당 항목에 label: { en: ... } 를 적습니다.
+# 다시 맞추기: npm run i18n -- bs3max en
+
+# 홈 화면
+홈 화면: Home Screen
+
+# 홈 화면 > 모든 메뉴
+모든 메뉴: All Menu
+
+# 홈 화면 > 모든 메뉴 > 대시보드
+대시보드: Dashboard
+사용자 수: Number of Users
+얼굴 수: Number of Faces
+카드 수: Number of Cards
+DRAM 사용량: DRAM Usage
+이벤트 로그: Event Log
+사용자 등록 마법사: Enroll Wizard
+장치 요약: Device Summary
+모델명: Model Name
+장치 ID: Device ID
+커널: Kernel
+무선 MAC: Wireless MAC
+규제인증 및 라이선스: Regulatory & Licenses
+라이선스: License
+오픈 소스 소프트웨어: Open Source Software
+규제인증 정보: Regulatory Information
+
+# 홈 화면 > 모든 메뉴 > 사용자
+사용자: User
+사용자 추가(+): Add User (+)
+사용자 등록현황: User Registration Status
+
+# 홈 화면 > 모든 메뉴 > 인증
+인증: Authentication
+인증 모드: Authentication Mode
+인증 옵션: Authentication Options
+서버 매칭(지문, 카드, ID): Server Matching (Fingerprint, Card, ID)
+QR 인증: QR Authentication
+카드를 QR로 인증하기: Use QR as Card
+스크램블 키패드: Scramble Keypad
+인증 결과 표시 옵션: Authentication Result Display Options
+사용자 ID 표시: Show User ID
+전체 표시: Show All
+첫 문자만 표시: Show First Character Only
+표시하지 않기: Do Not Show
+사용자 이름 표시: Show User Name
+얼굴 & 지문: Face & Fingerprint
+얼굴 인증 옵션: Face Authentication Options
+모션 센서 감도: Motion Sensor Sensitivity
+끔: Off
+낮음: Low
+중간: Medium
+높음: High
+등록 대기 시간: Enrollment Timeout
+초: sec
+인증 대기 시간: Authentication Timeout
+등록얼굴 중복검사: Duplicate Face Check
+얼굴 검출 설정: Face Detection Settings
+최대 얼굴 회전 각도: Max Head Rotation Angle
+얼굴 인식 거리: Face Detection Distance
+얼굴 인식 영역 넓히기: Wide Face Detection Area
+ToM 등록: ToM Enrollment
+비주얼 페이스 이미지 저장하기: Store Visual Face Image
+얼굴 인식: Face Recognition
+보안 등급: Security Level
+보통: Normal
+안전: Secure
+가장 안전: Most Secure
+작동 모드: Operation Mode
+퓨전 매칭: Fusion Matching
+빠른 인증: Fast Authentication
+위조 얼굴 검출: Fake Face Detection
+강함: Strong
+아주 강함: Very Strong
+고급 설정: Advanced Settings
+마스크 검출: Mask Detection
+마스크 확인 모드 설정: Mask Check Mode Settings
+확인 모드: Check Mode
+인증 후 확인: Check After Authentication
+확인 후 인증: Authenticate After Check
+확인만: Check Only
+지문 인증 옵션: Fingerprint Authentication Options
+매칭 대기 시간: Matching Timeout
+이미지 표시: Show Image
+센서 감도: Sensor Sensitivity
+1:N Fast 모드: 1:N Fast Mode
+자동: Auto
+빠름: Fast
+가장 빠름: Fastest
+템플릿 형식: Template Format
+센서 모드: Sensor Mode
+항상 켜짐: Always On
+자동 켜짐: Auto On
+위조 지문 검출: Fake Fingerprint Detection
+사용 안 함: Not Use
+등록 품질 검사: Enrollment Quality Check
+등록지문 중복검사: Duplicate Fingerprint Check
+근태: T&A
+근태 모드: T&A Mode
+사용 안함: Not Use
+수동변경: By User
+자동변경: By Schedule
+수동고정: Last Choice
+고정: Fixed
+근태 코드: T&A Code
+근태 등록 필요: T&A Required
+작업 코드: Job Code
+
+# 홈 화면 > 모든 메뉴 > 설정
+설정: Settings
+화면과 소리: Display & Sound
+화면: Display
+공지사항: Notice
+로고: Logo
+슬라이드쇼: Slide Show
+언어: Language
+한국어: Korean
+사용자 정의: Custom
+장치 개인 메시지: Device Private Message
+서버 개인 메시지: Server Private Message
+화면 보호기: Screen Saver
+타임아웃: Timeout
+메뉴 표시 시간: Menu Timeout
+10 초: 10 sec
+20 초: 20 sec
+30 초: 30 sec
+40 초: 40 sec
+50 초: 50 sec
+메시지 표시 시간: Message Timeout
+0.5 초: 0.5 sec
+1 초: 1 sec
+2 초: 2 sec
+3 초: 3 sec
+4 초: 4 sec
+5 초: 5 sec
+백라이트 시간: Backlight Timeout
+사운드: Sound
+음성 안내: Voice Instruction
+볼륨: Volume
+IP 인터폰 스피커 음량: IP Intercom Speaker Volume
+IP 인터폰 마이크 음량: IP Intercom Microphone Volume
+통신: Network
+네트워크 장치: Network Device
+이더넷: Ethernet
+TCP/IP 설정: TCP/IP Settings
+장치 포트: Device Port
+IP 주소: IP Address
+게이트웨이: Gateway
+서브넷마스크: Subnet Mask
+도메인네임서버: DNS Server
+네트워크 서버: Network Server
+서버: Server
+서버 편집: Edit Server
+장치 -> 서버: Device -> Server
+OSDP 통신 설정: OSDP Settings
+마스터: Master
+슬레이브: Slave
+기본값: Default
+전송 속도: Baud Rate
+인증 결과: Authentication Result
+컨트롤러 결과 표시: Show Controller Result
+장치 인증 결과 표시: Show Device Result
+장치: Device
+IP 인터폰: IP Intercom
+슬레이브 장치 라이선스 목록: Slave Device License List
+장치에 활성화된 라이선스 목록: Activated Licenses
+릴레이: Relay
+날짜와 시간: Date & Time
+2026/07/20 오전 04:08:39: 2026/07/20 04:08:39 AM
+표준 시간대: Time Zone
+시간 동기화: Time Sync
+날짜 형식: Date Format
+시간 형식: Time Format
+오전/오후: AM/PM
+24시간: 24-hour
+일광절약시간: Daylight Saving Time
+일광절약시간 추가: Add Daylight Saving Time
+장치 정보: Device Info
+시리얼 번호: Serial Number
+메모리 정보: Memory Info
+USB 메모리: USB Memory
+가져오기: Import
+내보내기: Export
+펌웨어 업그레이드: Firmware Upgrade
+보안 탬퍼: Secure Tamper
+마스터 관리자: Master Admin
+마스터 관리자 설정: Master Admin Settings
+장치 다시 시작: Restart Device
+기본값 복원: Restore Default
+전체 설정: All Settings
+네트워크 설정 유지: Keep Network Settings
+공장 초기화: Factory Reset
+사용자 ID 종류: User ID Type
+숫자: Number
+영숫자: Alphanumeric
+
+# 홈 화면 > 모든 메뉴 > 나가기
+나가기: Exit
+
+# 홈 화면 > 사용자 ID
+사용자 ID: User ID
+
+# 홈 화면 > 출입문
+출입문: Door
+
+# 홈 화면 > 출입문 > 수동 개방
+수동 개방: Manual Unlock
+
+# 홈 화면 > 출입문 > 수동 잠금
+수동 잠금: Manual Lock
+
+# 홈 화면 > 출입문 > 개방/잠금 해제
+개방/잠금 해제: Release
+
+# 기능 화면 > 사용자 추가 (1/2)
+사용자 추가 (1/2): Add User (1/2)
+
+# 기능 화면 > 사용자 추가 (1/2) > 사진
+사진: Photo
+
+# 기능 화면 > 사용자 추가 (1/2) > 이름
+이름: Name
+이름을 입력하십시오: Enter a name
+
+# 기능 화면 > 사용자 추가 (1/2) > 얼굴
+얼굴: Face
+
+# 기능 화면 > 사용자 추가 (1/2) > 카드 / QR코드
+카드 / QR코드: Card / QR Code
+
+# 기능 화면 > 사용자 추가 (1/2) > 다음
+다음: Next
+
+# 기능 화면 > 이벤트 로그 > 검색
+검색: Search
+
+# 기능 화면 > 이벤트 로그 > 삭제
+삭제: Delete
+
+# 기능 화면 > 이벤트 로그 > 전체 이벤트 로그
+전체 이벤트 로그: All Event Logs
+관리자 메뉴: Admin Menu
+관리자 인증 실패: Admin Authentication Failed
+인증 실패: Authentication Failed
+DHCP 연결: DHCP Connected
+이더넷 연결: Ethernet Connected
+탬퍼 켜짐: Tamper On
+입력 감지: Input Detected
+
+# 기능 화면 > 근태 코드를 선택하십시오
+근태 코드를 선택하십시오: Select a T&A code
+
+# 기능 화면 > 근태 코드를 선택하십시오 > 출근
+출근: Check In
+
+# 기능 화면 > 근태 코드를 선택하십시오 > 퇴근
+퇴근: Check Out
+
+# 기능 화면 > 근태 코드를 선택하십시오 > 복귀
+복귀: Back In
+
+# 기능 화면 > 근태 코드를 선택하십시오 > 외출
+외출: Go Out
+
+# 기능 화면 > 사용자 편집
+사용자 편집: Edit User
+
+# 기능 화면 > 사용자 편집 > 사용자 정보
+사용자 정보: User Info
+
+# 기능 화면 > 사용자 편집 > 사용자 권한
+사용자 권한: Operator Level
+권한 없음: None
+
+# 기능 화면 > 사용자 편집 > 유효기간
+유효기간: Period
+
+# 기능 화면 > 사용자 편집 > 출입 그룹
+출입 그룹: Access Group
+
+# 기능 화면 > 사용자 편집 > 확장 개인 인증 모드
+확장 개인 인증 모드: Extended Private Auth Mode
+
+# 기능 화면 > 인증 모드 > 얼굴
+항상 사용: Always
+
+# 기능 화면 > 인증 모드 > 카드/QR + 얼굴/PIN
+카드/QR + 얼굴/PIN: Card/QR + Face/PIN
+
+# 기능 화면 > 인증 모드 > ID + 얼굴/PIN
+ID + 얼굴/PIN: ID + Face/PIN
+
+# 기능 화면 > 인증 모드 > 인증 모드 추가
+인증 모드 추가: Add Authentication Mode
+
+# 기능 화면 > 인증 모드 등록
+인증 모드 등록: Add Authentication Mode
+
+# 기능 화면 > 인증 모드 등록 > 인증 수단 추가
+인증 수단 추가: Add Credential
+
+# 기능 화면 > 인증 모드 등록 > 스케줄
+스케줄: Schedule
+
+# 기능 화면 > ID 입력
+ID 입력: Enter ID
+
+# 기능 화면 > ID 입력 > ID 입력칸
+ID 입력칸: ID Field
+
+# 기능 화면 > ID 입력 > 키패드
+키패드: Keypad
+
+# 기능 화면 > 근태 코드 등록
+근태 코드 등록: Add T&A Code
+
+# 기능 화면 > 근태 코드 등록 > 근태 아이콘
+근태 아이콘: T&A Icon
+
+# 기능 화면 > 근태 코드 등록 > 근태 이벤트 이름
+근태 이벤트 이름: T&A Event Name
+근태 이벤트 이름을 입력하십시오: Enter a T&A event name

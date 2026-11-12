@@ -1,0 +1,35 @@
+# 예시 - 가로형 장치 — en 표시 이름 사전
+# 왼쪽: sample-landscape.yaml 의 원문(ko) / 오른쪽: 번역. 비워 두면 원문이 표시됩니다.
+# 같은 원문은 한 번만 번역하면 모든 곳에 적용됩니다.
+# 특정 위치만 다르게 번역하려면 sample-landscape.yaml 의 해당 항목에 label: { en: ... } 를 적습니다.
+# 다시 맞추기: npm run i18n -- sample-landscape en
+
+# 홈 화면
+홈 화면: Home Screen
+
+# 홈 화면 > 메뉴
+메뉴: Menu
+
+# 홈 화면 > 메뉴 > 설정
+설정: Settings
+일반: General
+화면: Display
+밝기: Brightness
+언어: Language
+한국어: Korean
+화면 보호기: Screen Saver
+정보: Info
+모델명: Model Name
+펌웨어: Firmware
+
+# 홈 화면 > 메뉴 > 나가기
+나가기: Exit
+
+# 홈 화면 > 출입문
+출입문: Door
+
+# 홈 화면 > 출입문 > 수동 개방
+수동 개방: Manual Unlock
+
+# 홈 화면 > 출입문 > 수동 잠금
+수동 잠금: Manual Lock

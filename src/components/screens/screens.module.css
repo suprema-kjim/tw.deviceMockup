@@ -1,0 +1,255 @@
+/* 모든 크기는 장치 화면 px 기준이다 (DeviceFrame 이 전체를 축소해서 보여준다). */
+
+.device {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background: var(--screen-bg);
+  color: var(--text);
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+  overflow: hidden;
+}
+
+.fill {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.screen {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  /* 화면 style 의 --screen-bg 가 목록 아래 빈 곳까지 칠해지도록 */
+  background: var(--screen-bg);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+.form {
+  /* layout: form — 입력 화면. 위에서부터 쌓고 action 버튼은 맨 아래로 */
+  background: var(--dashboard-bg);
+}
+
+.empty {
+  align-items: center;
+  justify-content: center;
+  color: var(--text-sub);
+}
+
+/* 이미지 */
+.imageView {
+  position: relative;
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.image {
+  display: block;
+  width: 100%;
+}
+
+.placeholder {
+  flex: 1;
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  background: repeating-linear-gradient(45deg, var(--placeholder-a), var(--placeholder-a) 24px, var(--placeholder-b) 24px, var(--placeholder-b) 48px);
+  color: var(--text-sub);
+  font-size: var(--font-size-sub);
+  text-align: center;
+  padding: 40px;
+}
+
+.placeholder strong {
+  color: var(--text);
+  font-size: var(--font-size);
+}
+
+.hotspot {
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 0;
+  border: 3px dashed var(--hotspot-border);
+  border-radius: 12px;
+  background: var(--hotspot-bg);
+  color: var(--text);
+  font: inherit;
+  cursor: pointer;
+}
+
+.hotspot:hover,
+.hotspotSelected {
+  background: var(--hotspot-bg-hover);
+  border-style: solid;
+}
+
+.hotspotIcon {
+  width: 72px;
+  height: 56px;
+}
+
+/* 떠 있는 버튼 */
+.floating {
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.floatingLarge {
+  width: var(--fab-size);
+  height: var(--fab-size);
+  background: var(--accent);
+}
+
+.floatingSmall {
+  width: var(--fab-small-size);
+  height: var(--fab-small-size);
+  background: var(--info-color);
+}
+
+.floatingIcon {
+  width: 55%;
+  height: 55%;
+}
+
+.floatingSelected {
+  outline: 6px solid var(--focus-ring);
+}
+
+/* 위쪽 버튼은 목록 첫 줄(분류 막대) 높이의 가운데에 오도록 */
+.slotTopLeft { top: calc((var(--category-height) - var(--fab-small-size)) / 2); left: 24px; }
+.slotTopRight { top: calc((var(--category-height) - var(--fab-small-size)) / 2); right: 24px; }
+.slotBottomLeft { bottom: 32px; left: 32px; }
+.slotBottomRight { bottom: 32px; right: 32px; }
+
+/* 홈 화면 */
+.home {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 56px 56px 84px;
+  background: var(--home-bg);
+  color: var(--home-fg);
+}
+
+.homeTop {
+  display: flex;
+  justify-content: space-between;
+  min-height: 100px;
+}
+
+.homeTopButton {
+  width: 100px;
+  height: 100px;
+  padding: 0;
+  border: none;
+  border-radius: 16px;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.homeTopIcon {
+  width: 100%;
+  height: 100%;
+}
+
+.homeSelected {
+  outline: 4px solid var(--focus-ring);
+  outline-offset: 6px;
+}
+
+.homeClock {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 60px;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.homeTime {
+  font-size: var(--home-time-size);
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.homeAmpm {
+  margin: 0 12px;
+  font-size: calc(var(--home-time-size) * 0.36);
+  font-weight: 400;
+  vertical-align: super;
+}
+
+.homeDate {
+  font-size: calc(var(--home-time-size) * 0.36);
+  opacity: 0.85;
+}
+
+.homeBottom {
+  display: flex;
+  justify-content: space-around;
+}
+
+.homeBottomItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 8px;
+  border: none;
+  border-radius: 16px;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.homeCircle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.homeCircleIcon {
+  width: 44px;
+  height: 44px;
+  color: #fff;
+}
+
+.homeLabel {
+  font-size: var(--font-size-sub);
+}

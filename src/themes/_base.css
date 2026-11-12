@@ -1,0 +1,161 @@
+/*
+ * 장치 테마 기본값 (theme: default).
+ * 장치 YAML 의 theme 값과 같은 이름의 파일(src/themes/<이름>.css)에서
+ * .mockup-screen[data-theme='<이름>'] { ... } 로 필요한 변수만 덮어쓴다.
+ * 크기는 모두 장치 화면 px 기준이다.
+ */
+.mockup-screen {
+  --accent: #2563eb;
+  --focus-ring: #f59e0b;
+  --info-color: #64748b;
+
+  --font-family: 'Pretendard', 'Noto Sans KR', 'Malgun Gothic', system-ui, sans-serif;
+  --font-size: 28px;
+  --font-size-sub: 24px;
+  --screen-bg: #ffffff;
+  --text: #222222;
+  --text-sub: #888888;
+
+  --header-height: 100px;
+  --header-font-size: 32px;
+  --header-bg: #1f2937;
+  --header-fg: #ffffff;
+  --header-pill-bg: #f2f3f5;
+  --header-pill-fg: #353535;
+  --header-pill-font-size: 30px;
+
+  --row-height: 96px;
+  --row-padding-x: 32px;
+  --row-border: #eeeeee;
+  --row-hover: #f6f7f9;
+
+  --category-bg: #eef1f5;
+  --category-fg: #475569;
+  --category-font-size: 22px;
+  --category-height: 60px;
+
+  --top-tab-height: 90px;
+  --top-tab-font-size: 26px;
+  --top-tab-bg: #e5e7eb;
+  --top-tab-fg: #6b7280;
+  --top-tab-active-bg: #ffffff;
+  --top-tab-active-fg: #111827;
+
+  --bottom-tab-height: 140px;
+  --bottom-tab-font-size: 20px;
+  --bottom-tab-icon-size: 48px;
+  --bottom-tab-bg: #fafafa;
+  --bottom-tab-fg: #555555;
+
+  --toggle-width: 80px;
+  --toggle-height: 44px;
+  --toggle-off: #d5d5d5;
+  --slider-thumb-size: 44px;
+  --slider-rest: #cfd2d8;
+  --slider-halo: rgba(0, 0, 0, 0.08);
+
+  --fab-size: 100px;
+  --fab-small-size: 44px;
+  --sheet-radius: 24px;
+  --option-active-bg: #eff4ff;
+
+  --hotspot-bg: rgba(83, 100, 209, 0.10);
+  --hotspot-bg-hover: rgba(83, 100, 209, 0.22);
+  --hotspot-border: rgba(83, 100, 209, 0.6);
+  --placeholder-a: #f3f4f6;
+  --placeholder-b: #eceef1;
+
+  /* 대시보드 (stat / tile / info) */
+  --dashboard-bg: linear-gradient(180deg, #f3f4f6, #e9ebee);
+  --dashboard-columns: 3;
+  --stat-ring-size: 180px;
+  --stat-ring-width: 3.2;   /* viewBox 100 기준 선 두께 */
+  --stat-ring: #c9cbd0;
+  --stat-icon: #2b2b2b;
+  --stat-value-size: 38px;
+  --tile-label-size: 34px;
+  --stat-list-gap: 70px;      /* layout: list 의 줄 간격 */
+  --stat-list-indent: 100px;  /* layout: list 의 왼쪽 여백 */
+  --stat-label-size: 38px;
+  --stat-row-value-size: 32px;
+  --info-bg: linear-gradient(180deg, #dfe2e7, #e7eaee);
+  --info-label: #666b73;
+  --info-value: #3a3f47;
+  --info-font-size: 26px;
+
+  /* 제목 막대 목록 (section) / 이벤트 로그 (log) */
+  --section-bar-height: 76px;
+  --section-bar-bg: #d9dce2;
+  --section-bar-fg: #444a52;
+  --section-bar-font-size: 30px;
+  --log-bg: linear-gradient(180deg, #eef0f3, #e6e9ed);
+  --log-row-height: 148px;
+  --log-divider: #c9ccd2;
+  --log-badge-size: 92px;
+  --log-title-size: 38px;
+  --log-time-size: 30px;
+  --log-info: #f0b323;
+  --log-success: #1f63e0;
+  --log-fail: #ee2a2a;
+
+  /* 입력 화면 (avatar / field / check / action) */
+  --form-gutter: 104px;
+  --form-gutter-wide: 56px;
+  --form-muted: #8a909a;
+  --avatar-size: 260px;
+  --avatar-margin: 48px 0 56px;
+  --field-height: 110px;
+  --field-gap: 40px;
+  --check-off-bg: transparent;
+  --group-bg: transparent;
+  --group-padding-bottom: 0px;
+  --avatar-color: #a9b0bb;
+  --field-font-size: 44px;
+  --field-line: #9aa3b5;
+  --field-clear-bg: #8f9bb6;
+  --check-size: 180px;
+  --check-font-size: 30px;
+  --check-off: #7b8089;
+  --check-on-bg: #f2d3d6;
+  --action-height: 128px;
+  --action-bg: linear-gradient(90deg, #1a9a72, #22a67f);
+  --action-fg: #e8f3ef;
+  --action-font-size: 40px;
+  --chip-size: 82px;
+  --chip-bg: var(--accent);
+  --authmode-row-height: 128px;
+  --compose-height: 640px;
+  --compose-bg: linear-gradient(180deg, #c3cee0, #d0d9e7);
+  --compose-line: #4c5260;
+  --picker-overlay: rgba(40, 44, 52, 0.35);
+  --picker-label: #1d1f23;
+  --textbox-margin: 150px 64px 0;
+  --textbox-height: 128px;
+  --textbox-bg: #eef0f4;
+  --textbox-border: #b9bfca;
+  --textbox-font-size: 32px;
+  --keypad-bg: #a9abb0;
+  --key-size: 107px;
+  --key-bg: #3a3b3e;
+  --key-fg: #ffffff;
+  --key-font-size: 30px;
+  --choice-columns: 4;
+  --choice-size: 132px;
+  --choice-gap: 30px;
+  --choice-border: #9a9ea6;
+  --choice-bg: #eef0f3;
+  --choice-fg: #55595f;
+  --pad-columns: 2;
+  --pad-height: 162px;
+  --pad-font-size: 30px;
+  --pad-fg: #ffffff;
+  --pad-gap-color: rgba(255, 255, 255, 0.35);
+
+  --home-bg: linear-gradient(160deg, #334155, #0f172a);
+  --home-fg: #ffffff;
+  --home-time-size: 100px;
+
+  --bezel: #16181d;
+  --bezel-radius: 56px;
+  --screen-radius: 16px;
+}

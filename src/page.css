@@ -1,0 +1,131 @@
+/* 웹페이지(장치 바깥) 스타일 */
+:root {
+  --page-bg: #f4f5f7;
+  --page-surface: #ffffff;
+  --page-text: #1f2328;
+  --page-muted: #6a737d;
+  --page-border: #e3e5e8;
+  --page-chip: #eef0f3;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page-bg: #15171a;
+    --page-surface: #1e2125;
+    --page-text: #e6e8eb;
+    --page-muted: #9aa3ad;
+    --page-border: #2e3238;
+    --page-chip: #2a2e34;
+    color-scheme: dark;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--page-bg);
+  color: var(--page-text);
+  font-family: 'Pretendard', 'Noto Sans KR', 'Malgun Gothic', system-ui, sans-serif;
+}
+
+.app-bar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 24px;
+  border-bottom: 1px solid var(--page-border);
+  background: var(--page-surface);
+}
+
+.app-bar h1 {
+  margin: 0;
+  font-size: 17px;
+}
+
+.app-bar select {
+  padding: 4px 8px;
+  border: 1px solid var(--page-border);
+  border-radius: 6px;
+  background: var(--page-surface);
+  color: inherit;
+  font: inherit;
+}
+
+.lang-switch {
+  display: inline-flex;
+  overflow: hidden;
+  border: 1px solid var(--page-border);
+  border-radius: 6px;
+}
+
+.lang-switch button {
+  padding: 4px 10px;
+  border: none;
+  background: var(--page-surface);
+  color: var(--page-muted);
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.lang-switch button + button {
+  border-left: 1px solid var(--page-border);
+}
+
+.lang-switch button.active {
+  background: var(--page-chip);
+  color: var(--page-text);
+  font-weight: 600;
+}
+
+.app-stat {
+  margin-left: auto;
+  color: var(--page-muted);
+  font-size: 13px;
+}
+
+main {
+  padding: 24px;
+}
+
+.mockup-layout {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 32px;
+}
+
+.problems {
+  margin: 12px 24px 0;
+  padding: 10px 14px;
+  border: 1px solid #f0c36d;
+  border-radius: 8px;
+  background: #fff8e6;
+  color: #5c4400;
+  font-size: 13px;
+}
+
+.problems ul {
+  margin: 8px 0 0;
+  padding-left: 18px;
+  line-height: 1.7;
+}
+
+.problem-error {
+  color: #b42318;
+  font-weight: 600;
+}
+
+.app-empty {
+  padding: 40px;
+}
+
+@media (max-width: 640px) {
+  main {
+    padding: 16px;
+  }
+}

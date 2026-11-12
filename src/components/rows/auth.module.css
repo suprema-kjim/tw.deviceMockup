@@ -1,0 +1,131 @@
+/* 인증 모드 화면 요소 (장치 px 기준) */
+
+.chip {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  width: var(--chip-size);
+  height: var(--chip-size);
+  border-radius: calc(var(--chip-size) / 2);
+  background: var(--chip-bg);
+  color: #fff;
+}
+
+.chipWide {
+  width: auto;
+  padding: 0 26px;
+}
+
+.chipIcon {
+  width: 54%;
+  height: 54%;
+}
+
+.chipWide .chipIcon {
+  width: calc(var(--chip-size) * 0.54);
+  height: calc(var(--chip-size) * 0.54);
+}
+
+.chipText {
+  font-size: calc(var(--chip-size) * 0.5);
+  font-weight: 500;
+  letter-spacing: -2px;
+}
+
+/* 인증 모드 한 줄 */
+.row {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  min-height: var(--authmode-row-height);
+  padding: 0 32px;
+  border-bottom: 1px solid var(--row-border);
+  background: var(--screen-bg);
+  cursor: pointer;
+}
+
+.row:hover {
+  background: var(--row-hover);
+}
+
+.selected {
+  box-shadow: inset 8px 0 0 var(--accent);
+}
+
+.combo {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: 28px;
+  min-width: 0;
+}
+
+.joiner {
+  color: var(--text-sub);
+  font-size: 30px;
+}
+
+.value {
+  color: var(--accent);
+  font-size: var(--font-size-sub);
+  white-space: nowrap;
+}
+
+/* 점선 원 + 추가 영역 */
+.compose {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--compose-height);
+  background: var(--compose-bg);
+}
+
+.addCircle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 140px;
+  height: 140px;
+  border: 4px dashed var(--compose-line);
+  border-radius: 50%;
+  background: none;
+  color: var(--compose-line);
+  cursor: pointer;
+}
+
+.addCircle.selected {
+  box-shadow: 0 0 0 6px var(--focus-ring);
+}
+
+.addIcon {
+  width: 40%;
+  height: 40%;
+}
+
+/* 인증 수단 고르기 팝업 */
+.picker {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.pickerItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  padding: 8px;
+  border: none;
+  border-radius: 16px;
+  background: none;
+  color: var(--picker-label);
+  font: inherit;
+  font-size: var(--font-size-sub);
+  cursor: pointer;
+}
+
+.pickerItem:hover {
+  background: rgba(255, 255, 255, 0.12);
+}

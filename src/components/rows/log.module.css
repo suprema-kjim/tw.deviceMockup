@@ -1,0 +1,121 @@
+/* 이벤트 로그 / 제목 막대 목록 (장치 px 기준) */
+
+.section {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  background: var(--log-bg);
+}
+
+.bar {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  height: var(--section-bar-height);
+  padding: 0 32px 0 36px;
+  background: var(--section-bar-bg);
+  color: var(--section-bar-fg);
+  font-size: var(--section-bar-font-size);
+  cursor: pointer;
+}
+
+.barTitle {
+  flex: 0 1 auto;
+}
+
+.barCount {
+  flex: 1;
+  color: var(--accent);
+}
+
+.barIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin-left: auto;
+  border-radius: 50%;
+  background: var(--info-color);
+  color: #fff;
+}
+
+.barIconSvg {
+  width: 70%;
+  height: 70%;
+}
+
+.sectionBody {
+  display: flex;
+  flex-direction: column;
+}
+
+.log {
+  display: flex;
+  align-items: center;
+  gap: 84px;
+  min-height: var(--log-row-height);
+  margin: 0 36px;
+  padding: 0 4px;
+  border-bottom: 1px solid var(--log-divider);
+  cursor: pointer;
+}
+
+.log:hover {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.selected {
+  box-shadow: inset 8px 0 0 var(--accent);
+}
+
+.badge {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: var(--log-badge-size);
+  height: var(--log-badge-size);
+  border-radius: 50%;
+  color: #fff;
+}
+
+.badgeIcon {
+  width: 52%;
+  height: 52%;
+}
+
+.info,
+.warning {
+  background: var(--log-info);
+}
+
+.success {
+  background: var(--log-success);
+}
+
+.fail {
+  background: var(--log-fail);
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
+}
+
+.title {
+  color: var(--text);
+  font-size: var(--log-title-size);
+  font-weight: 500;
+}
+
+.time {
+  color: var(--text);
+  font-size: var(--log-time-size);
+  font-variant-numeric: tabular-nums;
+}
